@@ -1,0 +1,16 @@
+#table {
+  width: 50%;
+}
+
+table td {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  height: 3vw;
+  width: 3vw;
+}
+
+table td.live {
+  background-color: black!important;
+}
