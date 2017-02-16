@@ -1,21 +1,54 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+
 body {
   text-align: center;
 }
 
+.btns {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  margin: 0;
+  margin-left: 10px;
+}
+
 #table {
+  display: flex;
+  justify-content: center;
   margin: auto;
-  width: 40%;
+  margin: 15px auto;
 }
 
-table td {
+td {
   background-color: white;
-  border-style: solid;
-  border-width: 1px;
+  border: 0.5px solid #d6d6d6;
   box-sizing: border-box;
-  height: 0.8vw;
-  width: 0.8vw;
+  height: 0.5vw;
+  width: 0.5vw;
 }
 
-table td.live {
-  background-color: black!important;
+.color-scheme1 td.live {
+  background-color: #2626ff!important;
+}
+
+.color-scheme1 td.was-live {
+  background-color: #b5eca2!important;
+}
+
+.color-scheme2 td.live {
+  background-color: #c9302c!important;
+}
+
+.color-scheme2 td.was-live {
+  background-color: #c5aa00!important;
+}
+
+.color-scheme3 td.live {
+  background-color: #7F00FF!important;
+}
+
+.color-scheme3 td.was-live {
+  background-color: #FFC1CC!important;
 }
