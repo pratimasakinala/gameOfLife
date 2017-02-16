@@ -2,23 +2,32 @@ var tableHolder = document.getElementById('table');
 
 // Create a grid and randomly assign 1 or 0 to each cell
 var grid = function (rows) {
-  var gridView = document.createElement('table');
+  var gridView = document.createElement('table'),
+    arr = [];
   tableHolder.appendChild(gridView);
 
-  var arr = [];
   for (var i = 0; i<rows; i++) {
     arr[i] = [];
     gridView.insertRow(i);
 
     for (var j=0; j < rows; j++) {
       gridView.firstChild.childNodes[i].insertCell(j);
-
-      if ( Math.round(Math.random()) ) arr[i][j] = 1;
-      else arr[i][j] = 0;
+      arr[i][j] = ( Math.round(Math.random()) ) ? 1 : 0;
     }
   }
+
+  // arr[1][26] = 1;
+  // arr[2][24] = arr[2][26] = 1;
+  // arr[3][14] = arr[3][15] = arr[3][22] = arr[3][23] = arr[3][36] = arr[3][37] = 1;
+  // arr[4][13] = arr[4][17] = arr[4][22] = arr[4][23] = arr[4][36] = arr[4][37] = 1;
+  // arr[5][1] = arr[5][2] = arr[5][12] = arr[5][18] = arr[4][22] = arr[4][23] = 1;
+  // arr[6][1] = arr[6][2] = arr[5][12] = arr[5][16] = arr[5][18] = arr[5][19] = arr[5][24] = arr[5][26] = 1;
+  // arr[7][12] = arr[7][18] = arr[5][26] = 1;
+  // arr[8][13] = arr[8][17] = 1;
+  // arr[9][14] = arr[9][15] = 1;
+
   return arr;
-}(20);
+}(40);
 
 // Show the grid on the window
 function drawGrid() {
@@ -40,82 +49,52 @@ function checkNeighbors(index, cellIndex) {
       switch (position) {
         case 1:
           // If current row is the first row then check top left neighbor in last row
-          if (index === 0) newIndex = grid.length - 1;
-          else newIndex = index - 1;
-
+          newIndex = (index === 0) ? (grid.length - 1) : (index - 1);
           // If current cell is first column then check top left neighbor in last column
-          if (cellIndex === 0) newCellIndex = grid.length - 1;
-          else newCellIndex = cellIndex - 1;
-
+          newCellIndex = (cellIndex === 0) ? (grid.length - 1) : cellIndex - 1;
           break;
         case 2:
           // If current row is the first row then check top center neighbor in last row
-          if (index === 0) newIndex = grid.length - 1;
-          else newIndex = index - 1;
-
+          newIndex = (index === 0) ? (grid.length - 1) : (index - 1);
           newCellIndex = cellIndex;
           break;
         case 3:
           // If current row is the first row then check top right neighbor in last row
-          if (index === 0) newIndex = grid.length - 1;
-          else newIndex = index - 1;
-
+          newIndex = (index === 0) ? (grid.length - 1) : (index - 1);
           // If current cell is last column then check top right neighbor in first column
-          if (cellIndex === grid.length - 1) newCellIndex = 0;
-          else newCellIndex = cellIndex + 1;
-
+          newCellIndex = (cellIndex === grid.length - 1) ? 0 : (cellIndex + 1);
           break;
         case 4:
           newIndex = index;
-
           // If current cell is first column then check left neighbor in last column
-          if (cellIndex === 0) newCellIndex = grid.length - 1;
-          else newCellIndex = cellIndex - 1;
-
+          newCellIndex = (cellIndex === 0) ? (grid.length - 1) : (cellIndex - 1);
           break;
         case 5:
           newIndex = index;
-
           // If current cell is last column then check right neighbor in first column
-          if (cellIndex === grid.length - 1) newCellIndex = 0;
-          else newCellIndex = cellIndex + 1;
-
+          newCellIndex = (cellIndex === grid.length - 1) ? 0 : (cellIndex + 1);
           break;
         case 6:
           // If current row is the last row then check bottom left neighbor in first row
-          if (index === grid.length - 1) newIndex = 0;
-          else newIndex = index + 1;
-
+          newIndex = (index === grid.length - 1) ? 0 : (index + 1);
           // If current cell is first column then check bottom left neighbor in last column
-          if (cellIndex === 0) newCellIndex = grid.length - 1;
-          else newCellIndex = cellIndex - 1;
-
+          newCellIndex = (cellIndex === 0) ? (grid.length - 1) : (cellIndex - 1);
           break;
         case 7:
           // If current row is the last row then check bottom center neighbor in first row
-          if (index === grid.length - 1) newIndex = 0;
-          else newIndex = index + 1;
-
+          newIndex = (index === grid.length - 1) ? 0 : (index + 1);
           newCellIndex = cellIndex;
           break;
         case 8:
           // If current row is the last row then check bottom center neighbor in first row
-          if (index === grid.length - 1) newIndex = 0;
-          else newIndex = index + 1;
-
+          newIndex = (index === grid.length - 1) ? 0 : (index + 1);
           // If current cell is last column then check bottom left neighbor in first column
-          if (cellIndex === grid.length - 1) newCellIndex = 0;
-          else newCellIndex = cellIndex + 1;
-
+          newCellIndex = (cellIndex === grid.length - 1) ? 0 : (cellIndex + 1);
           break;
       }
 
       // console.log({position, newIndex, newCellIndex});
-      if (newIndex >= 0 && newIndex < grid.length && newCellIndex >= 0 && newCellIndex < grid.length) {
-        // console.log("newIndex and newCellIndex are valid");
-        // console.log("grid[newIndex][newCellIndex]: " + grid[newIndex][newCellIndex]);
-        totalNeighbors += grid[newIndex][newCellIndex];
-      }
+      totalNeighbors += grid[newIndex][newCellIndex];
       position++;
     }
     return totalNeighbors;
@@ -180,7 +159,7 @@ function checkIfAlive() {
 }
 
 drawGrid();
-setInterval(loop, 500);
+setInterval(loop, 200);
 
 function loop() {
   checkIfAlive();
