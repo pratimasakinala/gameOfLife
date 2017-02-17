@@ -9,16 +9,23 @@
 </head>
 <body>
   <h2>Welcome to Conway's Game of Life</h2>
-  <div class="btns">
-    <button type="button" name="button" class="btn">Gosper Glider Gun</button>
-    <button type="button" name="button" class="btn">Random</button>
-    <button type="button" name="button" class="btn btn-danger">Reset</button>
-  </div>
-  <section id="table"></section>
+  <div class="box">
+    <div class="btns">
+      <button type="button" name="button" class="btn">Gosper Glider Gun</button>
+      <button type="button" name="button" class="btn">Random</button>
+      <button type="button" name="button" class="btn btn-danger">Reset</button>
+      <button type="button" name="button" class="btn">Change Color</button>
+    </div>
+    <div class="right-part">
+      <section id="table"></section>
 
-  <div class="btns">
-    <button type="button" name="button" class="btn">Change Color</button>
+      <div class="values">
+        <span>Generation : <span id="generation"></span></span>
+        <span>Live Cells : <span id="cell-count"></span></span>
+      </div>
+    </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>

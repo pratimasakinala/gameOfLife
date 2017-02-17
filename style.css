@@ -4,21 +4,35 @@ body {
   text-align: center;
 }
 
-.btns {
+h2 {
+  margin-top: 15px;
+}
+
+.box {
   display: flex;
-  justify-content: center;
+}
+
+.btns {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  max-width: 300px;
 }
 
 button {
-  margin: 0;
-  margin-left: 10px;
+  margin: 10px;
+}
+
+.right-part {
+  flex: 2;
 }
 
 #table {
   display: flex;
   justify-content: center;
-  margin: auto;
   margin: 15px auto;
+  margin-top: 9px;
 }
 
 td {
@@ -51,4 +65,12 @@ td {
 
 .color-scheme3 td.was-live {
   background-color: #FFC1CC!important;
+}
+
+.values {
+  text-align: center;
+}
+
+#generation {
+  margin-right: 20px;
 }

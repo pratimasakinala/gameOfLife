@@ -3,10 +3,14 @@ var tableHolder = document.getElementById('table'),
   random = document.querySelectorAll('button')[1],
   reset = document.querySelectorAll('button')[2],
   color = document.querySelectorAll('button')[3],
+  gen = document.getElementById('generation'),
+  count = document.getElementById('cell-count'),
   interval,
+  cellCount = 0,
+  generation = -1,
   isGosperGun = false,
   gridHeight = 70,
-  gridWidth = 120;
+  gridWidth = 140;
 
 var grid = createGrid(gridHeight, gridWidth);
 
@@ -31,11 +35,13 @@ function createGrid(rows, cols) {
 
 // Show the grid on the window
 function drawGrid() {
+  cellCount = 0;
   grid.forEach(function(row, index) {
     row.forEach(function(cell, cellIndex) {
       if (cell) {
           tableHolder.firstChild.firstChild.childNodes[index].childNodes[cellIndex].classList.remove('was-live');
           tableHolder.firstChild.firstChild.childNodes[index].childNodes[cellIndex].classList.add('live');
+          cellCount++;
       } else {
           if (tableHolder.firstChild.firstChild.childNodes[index].childNodes[cellIndex].classList.contains('live')) {
             tableHolder.firstChild.firstChild.childNodes[index].childNodes[cellIndex].classList.remove('live');
@@ -44,12 +50,23 @@ function drawGrid() {
       }
     })
   });
+  count.innerHTML = cellCount;
+  generation++;
+  gen.innerHTML = generation;
 }
 
 function clearGrid() {
-  tableHolder.removeChild(tableHolder.childNodes[0]);
   clearInterval(interval);
-  createGrid(gridHeight, gridWidth);
+  tableHolder.removeChild(tableHolder.childNodes[0]);
+
+  // Reset live cell count and generation to 0
+  cellCount = 0;
+  count.innerHTML = cellCount;
+  generation = -1;
+  gen.innerHTML = generation + 1;
+
+  // Create a new grid
+  grid = createGrid(gridHeight, gridWidth);
 }
 
 // Find neighbors
@@ -236,6 +253,7 @@ function loop() {
 // Create gosper's glider gun
 gun.addEventListener('click', function() {
   isGosperGun = true;
+  clearGrid();
 
   grid[1][25] = 1;
   grid[2][23] = grid[2][25] = 1;
