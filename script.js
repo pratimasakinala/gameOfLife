@@ -297,6 +297,9 @@ color.addEventListener('click', function() {
     tableHolder.firstChild.classList.add('color-scheme3');
   } else if (tableHolder.firstChild.classList.contains('color-scheme3')) {
     tableHolder.firstChild.classList.remove('color-scheme3');
+    tableHolder.firstChild.classList.add('color-scheme4');
+  } else if (tableHolder.firstChild.classList.contains('color-scheme4')) {
+    tableHolder.firstChild.classList.remove('color-scheme4');
     tableHolder.firstChild.classList.add('color-scheme1');
   }
 });
