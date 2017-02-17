@@ -265,6 +265,11 @@ gun.addEventListener('click', function() {
   grid[8][12] = grid[8][16] = 1;
   grid[9][13] = grid[9][14] = 1;
 
+  grid[65][79] = grid[65][80] = 1
+  grid[66][79] = grid[66][81] = 1;
+  grid[67][81] = 1;
+  grid[68][81] = grid[68][82] = 1;
+
   drawGrid();
   interval = setInterval(loop, 200);
 });
