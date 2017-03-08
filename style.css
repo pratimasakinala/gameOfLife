@@ -75,6 +75,14 @@ td {
   background-color: #FFC1CC!important;
 }
 
+.color-scheme4 td.live {
+  background-color: #000!important;
+}
+
+.color-scheme4 td.was-live {
+  background-color: #fff!important;
+}
+
 .values {
   text-align: center;
 }
