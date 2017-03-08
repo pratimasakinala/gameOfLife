@@ -44,43 +44,35 @@ td {
 }
 
 .color-scheme1 td.live {
-  background-color: black!important;
-}
-
-.color-scheme1 td.was-live {
-  background-color: white!important;
-}
-
-.color-scheme2 td.live {
   background-color: #2626ff!important;
 }
 
-.color-scheme2 td.was-live {
+.color-scheme1 td.was-live {
   background-color: #b5eca2!important;
 }
 
-.color-scheme3 td.live {
+.color-scheme2 td.live {
   background-color: #c9302c!important;
 }
 
-.color-scheme3 td.was-live {
+.color-scheme2 td.was-live {
   background-color: #c5aa00!important;
 }
 
-.color-scheme4 td.live {
+.color-scheme3 td.live {
   background-color: #7F00FF!important;
 }
 
-.color-scheme4 td.was-live {
+.color-scheme3 td.was-live {
   background-color: #FFC1CC!important;
 }
 
 .color-scheme4 td.live {
-  background-color: #000!important;
+  background-color: black!important;
 }
 
 .color-scheme4 td.was-live {
-  background-color: #fff!important;
+  background-color: white!important;
 }
 
 .values {
